@@ -1,0 +1,29 @@
+{
+  "name": "FulfillMyNeed",
+  "short_name": "FMN",
+  "description": "Kenya's premier marketplace where askers post needs and fulfillers offer services",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#228B22",
+  "theme_color": "#228B22",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgdmlld0JveD0iMCAwIDE5MiAxOTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxOTIiIGhlaWdodD0iMTkyIiByeD0iMjQiIGZpbGw9IiMyMjhCMjIiLz4KPHBhdGggZD0iTTk2IDQ0TDE0NCA5MkgxMjhDMTI4IDczLjYgMTE0LjQgNjAgOTYgNjBDNzcuNiA2MCA2NCA3My42IDY0IDkySDQ4TDk2IDQ0WiIgZmlsbD0iI0YwRjBGMCIvPgo8cGF0aCBkPSJNMTQ0IDE0OEgxMjhDMTI4IDEyOS42IDExNC40IDExNiA5NiAxMTZDNzcuNiAxMTYgNjQgMTI5LjYgNjQgMTQ4SDQ4TDk2IDEwMEwxNDQgMTQ4WiIgZmlsbD0iI0YwRjBGMCIvPgo8L3N2Zz4K",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAJqSURBVHgB7d1BbtNAFMZx/00IRaKb7oALwAE4ABwADgAH6Ak4ABygbg8AB6ArqQtQJbqDFZCKEtnzvYSqKiWJ7Xkz7/2e9LdK8mb8P3lm7NiOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAsLNoT6KF5rQ3z1rz7EC5XUZ74lS5XUZ74li5XUZ74o1yu4z2xFvldhntiXfK7TLaEwPlNhntiaFyVwqQvBx1EOV2Ge2JoXJXCpC8HHUQ5XYZ7YmhclcKkLwcdRDldhntiaFyVwqQvBx1EOV2Ge2JoXJXCpC8HHUQ5XYZ7YmhclcKkLwcdRDldhntiaFyVwqQvBx1EOV2Ge2JoXJXCpC8HHUQ5XYZ7YmhclcKkLwcdRDldhntiaFyVwqQvBx1EOV2Ge2JoXJXCpC8HHUQ5XYZ7YmhclcKkLwcdRDldhntiaFyVwqQvBx1EOV2Ge2JoXJXCpC8HHUQ5XYZ7YmhclcKkLwcdRDldhntiaFyVwqQvBx1EOV2Ge2JoXJXCpC8HHUQ5XYZ7YmhclcKkLwcdRDldhntiaFyVwqQvBx1EOV2Ge2JoXJXCpC8HHUQ5XYZ7YmhclcKkLwcdRDldhntiaFyVwqQvBx1EOV2Ge2JoXJXCpC8HHUQ5XYZ7YmhclcKkLwcdRDldhntiaFyVwqQvBx1EOV2Ge2JoXJXCpC8HHUQ5XYZ7YmhclcKkLwcdRDldhntiaFyVwqQvBx1EOV2Ge2JoXJXCpC8HHUQ5XYZ7YmhclcKkLwcdRDldhntiaFyVwqQvBx1EOV2Ge2JoXJXCpC8HHUQ5XYZ7YmhclcKkLwcdRDldhntiaFyVwqQvBx1EOV2Ge2JoXJXCpC8HHUQ5XYZ7YmhclcKkLwcdRDldhntiaFyVwqQvBx1EOV2Ge2JoXJXCpC8HHUQ5XYZ7YmhclcKkLwcdRDldhntiaFyVwqQvBx1EOV2Ge2JoXJXCpC8HHUQ5XYZ7YmhclcKkLwcdRDldhntiaFyVwqQvBx1EOV2Ge2JoXJXCpC8HHUQ5XYZ7YmhclcKkLwcdRDldhntiaFyVwqQvBx1EOV2Ge2JoXJXCpC8HHUQ5XYZ7YmhclcKkLwcdRDldhntiaFyVwqQvBx1EOV2Ge2JoXJXCpC8HHUQ5XYZ7YmhclcKkLwcdRDldhntiaFyVwqQvBx1EOV2Ge2JoXJXCpC8HHUQ5XYZ7YmhclcKkLwcdRDldhntiaFyVwqQvBx1EOV2Ge2JoXJXCpC8HHUQ5XYZ7YmhclcKkLwcdRDldhntiaFyVwqQvBx1EOV2Ge2JoXJXCpC8HHUQ5XYZ7YmhclcKkLwcdRDldhntiaFyVwqQvBx1EOV2Ge2JoXJXCpC8HHUQ5XYZ7YmhclcKkLwcdRDldhntiaFyVwqQvBx1EOV2Ge2JoXJXCpC8HHUQ5XYZ7YmhclcKkLwcdRDldhntibFyZ/YH1gqQvBx1kIlyuw9x1EFGyu0+Rl6OOshEud3HyMtRB5kot/sYeTnqIBPldh8jL0cdZKLc7mPk5aiDTJTbfYy8HHWQiXK7j5GXow4yUW73MfJy1EEmyu0+Rl6OOshEud3HyMtRB5kot/sYeTnqIBPldh8jL0cdZKLc7mPk5aiDTJTbfYy8HHWQiXK7j5GXow4yUW73MfJy1EEmyu0+Rl6OOshEud3HyMtRB5kot/sYeTnqIBPldh8jL0cdZKLc7mPk5aiDTJTbfYy8HHWQiXK7j5GXow7yWbldRnuCPw8BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwL/sNF6pibA6zAREAAAAASUVORK5CYII=",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["business", "shopping", "social"],
+  "lang": "en",
+  "dir": "ltr",
+  "prefer_related_applications": false,
+  "related_applications": [],
+  "scope": "/",
+  "screenshots": []
+}
