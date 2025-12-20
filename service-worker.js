@@ -1,5 +1,5 @@
-// FulfillMyNeed.com - Service Worker
-const CACHE_NAME = 'fulfillmyneed-v1';
+// FulfillMyNeed.com Service Worker
+const CACHE_NAME = 'fulfillmyneed-v1.0.0';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -7,10 +7,10 @@ const urlsToCache = [
   '/js/app.js',
   '/manifest.json',
   'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
-  'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap'
+  'https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;500;600;700&display=swap'
 ];
 
-// Install Service Worker
+// Install event - cache assets
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
@@ -22,7 +22,7 @@ self.addEventListener('install', event => {
   );
 });
 
-// Activate Service Worker
+// Activate event - clean up old caches
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(cacheNames => {
@@ -38,13 +38,12 @@ self.addEventListener('activate', event => {
   );
 });
 
-// Fetch Strategy: Cache First, then Network
+// Fetch event - serve from cache, fallback to network
 self.addEventListener('fetch', event => {
-  // Skip non-GET requests
-  if (event.request.method !== 'GET') return;
-  
-  // Skip chrome-extension requests
-  if (event.request.url.startsWith('chrome-extension://')) return;
+  // Skip cross-origin requests
+  if (!event.request.url.startsWith(self.location.origin)) {
+    return;
+  }
   
   event.respondWith(
     caches.match(event.request)
@@ -54,7 +53,7 @@ self.addEventListener('fetch', event => {
           return response;
         }
         
-        // Clone the request because it's a stream and can only be consumed once
+        // Clone the request because it's a one-time use stream
         const fetchRequest = event.request.clone();
         
         return fetch(fetchRequest).then(response => {
@@ -63,140 +62,78 @@ self.addEventListener('fetch', event => {
             return response;
           }
           
-          // Clone the response because it's a stream and can only be consumed once
+          // Clone the response because it's a one-time use stream
           const responseToCache = response.clone();
           
           caches.open(CACHE_NAME)
             .then(cache => {
-              // Don't cache API calls or external resources that might change frequently
-              const shouldCache = 
-                event.request.url.startsWith('http') &&
-                !event.request.url.includes('/api/') &&
-                !event.request.url.includes('google-analytics') &&
-                !event.request.url.includes('gtag');
-                
-              if (shouldCache) {
-                cache.put(event.request, responseToCache);
-              }
+              cache.put(event.request, responseToCache);
             });
-            
+          
           return response;
-        }).catch(() => {
-          // If network fails and we don't have a cached version,
-          // we could return a custom offline page here
-          if (event.request.headers.get('accept').includes('text/html')) {
-            return caches.match('/');
-          }
         });
+      })
+      .catch(() => {
+        // If both cache and network fail, show offline page
+        if (event.request.mode === 'navigate') {
+          return caches.match('/');
+        }
       })
   );
 });
 
-// Background Sync for offline actions
+// Handle background sync
 self.addEventListener('sync', event => {
-  if (event.tag === 'postNeed') {
-    event.waitUntil(syncPostNeeds());
+  if (event.tag === 'sync-needs') {
+    event.waitUntil(syncNeeds());
   }
 });
 
-// Push Notifications
-self.addEventListener('push', event => {
-  const options = {
-    body: event.data ? event.data.text() : 'New need posted in your area!',
-    icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAkElEQVQ4je2SMQ6AIAxF/1Gv0KkXcPMEHqIn8ASO3sDBxQN4AheTlhKTglWZ7Ev7Ck3TF4EDOIBXgQVYg2cGsANrRK8BMyX1Iq5R9xS5BswR3UcsIq4Rc0QPgWn3sgSMEd1HjBHdBYbdywLQR3Qf0UV0F+h2LwtAG9F9RBPRTaDZvRTAQN4HfgEGhVblCo2iAAAAAElFTkSuQmCC',
-    badge: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAkElEQVQ4je2SMQ6AIAxF/1Gv0KkXcPMEHqIn8ASO3sDBxQN4AheTlhKTglWZ7Ev7Ck3TF4EDOIBXgQVYg2cGsANrRK8BMyX1Iq5R9xS5BswR3UcsIq4Rc0QPgWn3sgSMEd1HjBHdBYbdywLQR3Qf0UV0F+h2LwtAG9F9RBPRTaDZvRTAQN4HfgEGhVblCo2iAAAAAElFTkSuQmCC',
-    vibrate: [200, 100, 200],
-    data: {
-      dateOfArrival: Date.now(),
-      primaryKey: '1'
-    },
-    actions: [
-      {
-        action: 'view',
-        title: 'View Need'
-      },
-      {
-        action: 'close',
-        title: 'Close'
-      }
-    ]
-  };
-  
-  event.waitUntil(
-    self.registration.showNotification('FulfillMyNeed', options)
-  );
-});
-
-self.addEventListener('notificationclick', event => {
-  event.notification.close();
-  
-  if (event.action === 'view') {
-    event.waitUntil(
-      clients.openWindow('/')
-    );
-  }
-});
-
-// Helper function for background sync
-function syncPostNeeds() {
-  // Get pending needs from IndexedDB
-  return getPendingNeeds().then(needs => {
-    return Promise.all(
-      needs.map(need => {
-        // In a real app, this would send to your API
-        return fetch('/api/needs', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(need)
-        }).then(response => {
-          if (response.ok) {
-            // Remove from pending needs on success
-            return removePendingNeed(need.id);
-          }
-          throw new Error('Sync failed');
-        });
-      })
-    );
-  });
-}
-
-// IndexedDB helper functions (simplified for demo)
-function getPendingNeeds() {
-  return new Promise(resolve => {
-    // In a real app, implement IndexedDB
-    resolve([]);
-  });
-}
-
-function removePendingNeed(id) {
+// Sync needs when back online
+function syncNeeds() {
+  // This would sync any pending needs with the server
+  console.log('Syncing needs with server...');
   return Promise.resolve();
 }
 
-// Periodic background updates
-self.addEventListener('periodicsync', event => {
-  if (event.tag === 'update-needs') {
-    event.waitUntil(updateNeedsCache());
-  }
+// Handle push notifications
+self.addEventListener('push', event => {
+  if (!event.data) return;
+  
+  const data = event.data.json();
+  const options = {
+    body: data.body || 'New update from FulfillMyNeed',
+    icon: 'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2245%22 fill=%22%23228B22%22/><text x=%2250%22 y=%2265%22 font-size=%2245%22 text-anchor=%22middle%22 fill=%22white%22>F</text></svg>',
+    badge: 'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2245%22 fill=%22%23228B22%22/><text x=%2250%22 y=%2265%22 font-size=%2245%22 text-anchor=%22middle%22 fill=%22white%22>F</text></svg>',
+    vibrate: [200, 100, 200],
+    data: {
+      url: data.url || '/'
+    }
+  };
+  
+  event.waitUntil(
+    self.registration.showNotification(data.title || 'FulfillMyNeed', options)
+  );
 });
 
-function updateNeedsCache() {
-  // Update cached needs data periodically
-  return fetch('/api/needs/recent')
-    .then(response => response.json())
-    .then(needs => {
-      return caches.open(CACHE_NAME + '-data')
-        .then(cache => {
-          cache.put('/api/needs/recent', new Response(JSON.stringify(needs)));
-        });
-    })
-    .catch(err => console.log('Background update failed:', err));
-}
-
-// Handle offline/online status
-self.addEventListener('message', event => {
-  if (event.data && event.data.type === 'SKIP_WAITING') {
-    self.skipWaiting();
-  }
+// Handle notification clicks
+self.addEventListener('notificationclick', event => {
+  event.notification.close();
+  
+  event.waitUntil(
+    clients.matchAll({ type: 'window', includeUncontrolled: true })
+      .then(windowClients => {
+        // Check if there's already a window/tab open
+        for (const client of windowClients) {
+          if (client.url === event.notification.data.url && 'focus' in client) {
+            return client.focus();
+          }
+        }
+        
+        // If not, open a new window/tab
+        if (clients.openWindow) {
+          return clients.openWindow(event.notification.data.url);
+        }
+      })
+  );
 });
