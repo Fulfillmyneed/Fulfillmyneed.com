@@ -3,51 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FulfillMyNeed.com - You Need It. You Price It. They Fulfill It.</title>
-    <meta name="description" content="Kenya's premier marketplace where askers post needs and fulfillers offer services. Post your need, set your price, get it done!">
-    
-    <!-- PWA Meta Tags -->
-    <meta name="theme-color" content="#228B22">
-    <link rel="manifest" href="/manifest.json">
-    <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAkElEQVQ4je2SMQ6AIAxF/1Gv0KkXcPMEHqIn8ASO3sDBxQN4AheTlhKTglWZ7Ev7Ck3TF4EDOIBXgQVYg2cGsANrRK8BMyX1Iq5R9xS5BswR3UcsIq4Rc0QPgWn3sgSMEd1HjBHdBYbdywLQR3Qf0UV0F+h2LwtAG9F9RBPRTaDZvRTAQN4HfgEGhVblCo2iAAAAAElFTkSuQmCC">
-    
-    <!-- Styles -->
-    <link rel="stylesheet" href="/css/style.css">
-    
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- Icons -->
+    <title>FulfillMyNeed.com | You Need It. You Price It. They Fulfill It.</title>
+    <meta name="description" content="Kenya's premier marketplace for needs and services. Connect with local fulfillers for any task.">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤝</text></svg>">
+    <meta name="theme-color" content="#228B22">
 </head>
 <body>
-    <!-- Header -->
+    <!-- Header/Navigation -->
     <header class="header">
         <div class="container">
             <nav class="navbar">
                 <div class="logo">
-                    <a href="/" class="logo-link">
-                        <span class="logo-icon">FMN</span>
-                        <span class="logo-text">FulfillMyNeed</span>
-                    </a>
+                    <h1><i class="fas fa-hands-helping"></i> FulfillMyNeed</h1>
                 </div>
-                
-                <div class="nav-toggle" id="navToggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                
-                <ul class="nav-menu" id="navMenu">
-                    <li><a href="#how-it-works">How It Works</a></li>
-                    <li><a href="#categories">Categories</a></li>
-                    <li><a href="#trust">Why Trust Us</a></li>
-                    <li><a href="#fulfiller">Become Fulfiller</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#how-it-works"><i class="fas fa-info-circle"></i> How It Works</a></li>
+                    <li><a href="#categories"><i class="fas fa-th-large"></i> Categories</a></li>
+                    <li><a href="#trust"><i class="fas fa-shield-alt"></i> Safety</a></li>
                     <li class="nav-auth">
-                        <a href="#login" class="btn-login">Login</a>
-                        <a href="#register" class="btn-register">Register</a>
+                        <button class="btn btn-outline" id="loginBtn"><i class="fas fa-sign-in-alt"></i> Login</button>
+                        <button class="btn btn-primary" id="registerBtn"><i class="fas fa-user-plus"></i> Register</button>
                     </li>
                 </ul>
             </nav>
@@ -58,172 +40,77 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">Get Things Done, Your Way</h1>
-                <p class="hero-slogan">You Need It. You Price It. They Fulfill It.</p>
-                <p class="hero-tagline">You Ask. They Offer. We Connect.</p>
+                <h1>You Need It. You Price It. They Fulfill It.</h1>
+                <p class="tagline">You Ask. They Offer. We Connect.</p>
+                <p class="hero-subtitle">Kenya's trusted marketplace connecting people who have needs with those who can fulfill them.</p>
                 
+                <!-- Search Bar -->
                 <div class="search-container">
                     <div class="search-box">
-                        <input type="text" placeholder="What do you need done? e.g., Plumber in Nairobi" class="search-input">
-                        <button class="search-btn">
-                            <i class="fas fa-search"></i> Search Needs
-                        </button>
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="What do you need done? (e.g., plumber, cleaner, tutor)">
+                        <button class="btn btn-primary"><i class="fas fa-arrow-right"></i> Search</button>
                     </div>
                 </div>
                 
-                <div class="hero-buttons">
-                    <a href="#post-need" class="btn-hero btn-asker">
-                        <i class="fas fa-plus-circle"></i> Post a Need (Free)
-                    </a>
-                    <a href="#browse-needs" class="btn-hero btn-fulfiller">
-                        <i class="fas fa-search"></i> Browse Needs & Earn
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Category Icons -->
-    <section class="categories-icons">
-        <div class="container">
-            <h2 class="section-title">Popular Categories</h2>
-            <div class="categories-grid">
-                <div class="category-item">
-                    <div class="category-icon">
+                <!-- Category Icons -->
+                <div class="category-icons">
+                    <div class="icon-item">
                         <i class="fas fa-tools"></i>
+                        <span>Handyman</span>
                     </div>
-                    <span>Handyman</span>
-                </div>
-                <div class="category-item">
-                    <div class="category-icon">
+                    <div class="icon-item">
                         <i class="fas fa-broom"></i>
+                        <span>Cleaning</span>
                     </div>
-                    <span>Cleaning</span>
-                </div>
-                <div class="category-item">
-                    <div class="category-icon">
+                    <div class="icon-item">
                         <i class="fas fa-truck"></i>
+                        <span>Delivery</span>
                     </div>
-                    <span>Delivery</span>
-                </div>
-                <div class="category-item">
-                    <div class="category-icon">
-                        <i class="fas fa-home"></i>
-                    </div>
-                    <span>Rentals</span>
-                </div>
-                <div class="category-item">
-                    <div class="category-icon">
+                    <div class="icon-item">
                         <i class="fas fa-graduation-cap"></i>
+                        <span>Tutoring</span>
                     </div>
-                    <span>Tutoring</span>
-                </div>
-                <div class="category-item">
-                    <div class="category-icon">
+                    <div class="icon-item">
                         <i class="fas fa-paw"></i>
+                        <span>Pet Care</span>
                     </div>
-                    <span>Pet Care</span>
                 </div>
-                <div class="category-item">
-                    <div class="category-icon">
-                        <i class="fas fa-laptop"></i>
-                    </div>
-                    <span>Digital Services</span>
-                </div>
-                <div class="category-item">
-                    <div class="category-icon">
-                        <i class="fas fa-utensils"></i>
-                    </div>
-                    <span>Events & Catering</span>
+                
+                <!-- Hero Buttons -->
+                <div class="hero-buttons">
+                    <button class="btn-hero btn-asker" id="postNeedBtn">
+                        <i class="fas fa-plus-circle"></i>
+                        <div>
+                            <strong>Post a Need</strong>
+                            <small>Askers post 100% FREE</small>
+                        </div>
+                    </button>
+                    <button class="btn-hero btn-fulfiller" id="browseNeedsBtn">
+                        <i class="fas fa-search-dollar"></i>
+                        <div>
+                            <strong>Browse Needs</strong>
+                            <small>Earn as a Fulfiller</small>
+                        </div>
+                    </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Dynamic Carousel/Banner -->
+    <!-- Dynamic Carousel -->
     <section class="carousel-section">
         <div class="container">
+            <h2 class="section-title">Popular Needs Right Now</h2>
             <div class="carousel">
                 <div class="carousel-track">
-                    <div class="carousel-slide active">
-                        <div class="slide-content">
-                            <div class="slide-icon">
-                                <i class="fas fa-broom"></i>
-                            </div>
-                            <h3>Home Cleaning</h3>
-                            <p>From KES 800 per room</p>
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                                <span>4.5 (1,234 reviews)</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-slide">
-                        <div class="slide-content">
-                            <div class="slide-icon">
-                                <i class="fas fa-truck"></i>
-                            </div>
-                            <h3>Same-Day Delivery</h3>
-                            <p>From KES 500 in Nairobi</p>
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span>5.0 (892 reviews)</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-slide">
-                        <div class="slide-content">
-                            <div class="slide-icon">
-                                <i class="fas fa-tools"></i>
-                            </div>
-                            <h3>Plumbing Services</h3>
-                            <p>From KES 1,500 per job</p>
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                                <span>4.7 (756 reviews)</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-slide">
-                        <div class="slide-content">
-                            <div class="slide-icon">
-                                <i class="fas fa-home"></i>
-                            </div>
-                            <h3>Short-term Rentals</h3>
-                            <p>From KES 3,000 per night</p>
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span>5.0 (432 reviews)</span>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- Carousel items will be populated by JavaScript -->
                 </div>
-                <div class="carousel-nav">
-                    <button class="carousel-prev"><i class="fas fa-chevron-left"></i></button>
-                    <button class="carousel-next"><i class="fas fa-chevron-right"></i></button>
-                </div>
-                <div class="carousel-dots">
-                    <span class="dot active"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                </div>
+                <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="carousel-dots">
+                <!-- Dots will be populated by JavaScript -->
             </div>
         </div>
     </section>
@@ -234,163 +121,89 @@
             <h2 class="section-title">Why Trust FulfillMyNeed?</h2>
             <div class="trust-grid">
                 <div class="trust-card">
-                    <div class="trust-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
+                    <i class="fas fa-lock"></i>
                     <h3>Safe Platform</h3>
-                    <p>All users verified with ID. Secure payments for contact access only.</p>
+                    <p>Secure transactions and verified users ensure your safety.</p>
                 </div>
                 <div class="trust-card">
-                    <div class="trust-icon">
-                        <i class="fas fa-user-check"></i>
-                    </div>
+                    <i class="fas fa-check-circle"></i>
                     <h3>Verified Users</h3>
-                    <p>Every asker and fulfiller is verified with Kenyan ID and contact.</p>
+                    <p>All users are verified with ID for added security.</p>
                 </div>
                 <div class="trust-card">
-                    <div class="trust-icon">
-                        <i class="fas fa-money-bill-wave"></i>
-                    </div>
+                    <i class="fas fa-money-bill-wave"></i>
                     <h3>Pay for Real Leads</h3>
-                    <p>Only pay KES 100 to unlock genuine contact details for 1 hour.</p>
+                    <p>Fulfillers only pay when unlocking genuine contact details.</p>
                 </div>
                 <div class="trust-card">
-                    <div class="trust-icon">
-                        <i class="fas fa-ban"></i>
-                    </div>
+                    <i class="fas fa-ban"></i>
                     <h3>No Spam</h3>
-                    <p>Contact locked after fulfillment. No endless calls like other platforms.</p>
+                    <p>Contact details are protected and only shared when unlocked.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How FulfillMyNeed Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Post Your Need</h3>
+                    <p>Askers describe what they need, set a budget (KES), and post for FREE.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Fulfillers Respond</h3>
+                    <p>Local fulfillers see your need and express interest to help.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Unlock Contact</h3>
+                    <p>Fulfillers pay KES 100 to unlock your contact for 1 hour.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Get It Done</h3>
+                    <p>Connect directly, agree on terms, and get your need fulfilled!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories-section" id="categories">
+        <div class="container">
+            <h2 class="section-title">Browse by Category</h2>
+            <div class="categories-grid">
+                <!-- Categories will be populated by JavaScript -->
             </div>
         </div>
     </section>
 
     <!-- Fulfiller Section -->
-    <section class="fulfiller-section" id="fulfiller">
+    <section class="fulfiller-section">
         <div class="container">
             <div class="fulfiller-content">
                 <div class="fulfiller-text">
-                    <h2 class="section-title">Earn Money as a Fulfiller</h2>
-                    <div class="fulfiller-steps">
-                        <div class="step">
-                            <div class="step-number">1</div>
-                            <div class="step-content">
-                                <h3>Register Free</h3>
-                                <p>Sign up with your skills and location. Get your unique FulfillMyNeed ID.</p>
-                            </div>
-                        </div>
-                        <div class="step">
-                            <div class="step-number">2</div>
-                            <div class="step-content">
-                                <h3>Browse Needs</h3>
-                                <p>Find needs matching your skills. See budget and location upfront.</p>
-                            </div>
-                        </div>
-                        <div class="step">
-                            <div class="step-number">3</div>
-                            <div class="step-content">
-                                <h3>Unlock Contact</h3>
-                                <p>Pay KES 100 to unlock contact for 1 hour. Only you see the details.</p>
-                            </div>
-                        </div>
-                        <div class="step">
-                            <div class="step-number">4</div>
-                            <div class="step-content">
-                                <h3>Get Paid Directly</h3>
-                                <p>Contact the asker, agree on terms, and get paid directly outside platform.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="#register-fulfiller" class="btn-fulfiller-cta">
-                        <i class="fas fa-user-plus"></i> Become a Fulfiller
-                    </a>
+                    <h2>Become a Fulfiller</h2>
+                    <h3>Earn Money Doing What You Do Best</h3>
+                    <ul class="fulfiller-benefits">
+                        <li><i class="fas fa-check-circle"></i> Unlock real, local leads</li>
+                        <li><i class="fas fa-check-circle"></i> Pay only when you find a suitable need (KES 100)</li>
+                        <li><i class="fas fa-check-circle"></i> Grow your local reputation</li>
+                        <li><i class="fas fa-check-circle"></i> Work on your own schedule</li>
+                        <li><i class="fas fa-check-circle"></i> Get paid directly by the asker</li>
+                    </ul>
+                    <button class="btn btn-primary" id="becomeFulfillerBtn">Join as a Fulfiller</button>
                 </div>
                 <div class="fulfiller-image">
                     <div class="image-placeholder">
                         <i class="fas fa-users"></i>
-                        <p>Join 5,000+ Fulfillers Earning in Kenya</p>
+                        <p>Join thousands of fulfillers earning in Kenya</p>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Categories Display -->
-    <section class="categories-section" id="categories">
-        <div class="container">
-            <h2 class="section-title">Browse All Categories</h2>
-            <div class="categories-grid-full">
-                <div class="category-card">
-                    <h3><i class="fas fa-tools"></i> Services</h3>
-                    <ul>
-                        <li>Plumbers</li>
-                        <li>Electricians</li>
-                        <li>Cleaners</li>
-                        <li>Carpenters</li>
-                    </ul>
-                </div>
-                <div class="category-card">
-                    <h3><i class="fas fa-home"></i> Rentals</h3>
-                    <ul>
-                        <li>Cars & Vehicles</li>
-                        <li>Airbnb</li>
-                        <li>Event Venues</li>
-                        <li>Equipment</li>
-                    </ul>
-                </div>
-                <div class="category-card">
-                    <h3><i class="fas fa-calendar-alt"></i> Events & Weddings</h3>
-                    <ul>
-                        <li>Photographers</li>
-                        <li>Catering</li>
-                        <li>Decorations</li>
-                        <li>MC Services</li>
-                    </ul>
-                </div>
-                <div class="category-card">
-                    <h3><i class="fas fa-graduation-cap"></i> Education</h3>
-                    <ul>
-                        <li>Tutoring</li>
-                        <li>Online Courses</li>
-                        <li>Academic Writing</li>
-                        <li>Language Lessons</li>
-                    </ul>
-                </div>
-                <div class="category-card">
-                    <h3><i class="fas fa-truck"></i> Transport</h3>
-                    <ul>
-                        <li>Logistics</li>
-                        <li>Moving Services</li>
-                        <li>Delivery Riders</li>
-                        <li>Taxi Services</li>
-                    </ul>
-                </div>
-                <div class="category-card">
-                    <h3><i class="fas fa-shield-alt"></i> Security</h3>
-                    <ul>
-                        <li>Guards</li>
-                        <li>Alarm Installation</li>
-                        <li>Cybersecurity</li>
-                        <li>Private Security</li>
-                    </ul>
-                </div>
-                <div class="category-card">
-                    <h3><i class="fas fa-paint-brush"></i> Creative</h3>
-                    <ul>
-                        <li>Graphic Design</li>
-                        <li>Content Writing</li>
-                        <li>Video Editing</li>
-                        <li>Photography</li>
-                    </ul>
-                </div>
-                <div class="category-card">
-                    <h3><i class="fas fa-leaf"></i> Farming</h3>
-                    <ul>
-                        <li>Farm Workers</li>
-                        <li>Veterinary</li>
-                        <li>Harvesting</li>
-                        <li>Agriculture Advice</li>
-                    </ul>
                 </div>
             </div>
         </div>
@@ -401,271 +214,387 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <div class="footer-logo">
-                        <span class="logo-icon">FMN</span>
-                        <span class="logo-text">FulfillMyNeed</span>
+                    <h3><i class="fas fa-hands-helping"></i> FulfillMyNeed</h3>
+                    <p>Kenya's trusted marketplace connecting needs with fulfills.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
                     </div>
-                    <p class="footer-tagline">You Need It. You Price It. They Fulfill It.</p>
-                    <p class="footer-kenya">🇰🇪 Serving Kenya Nationwide</p>
                 </div>
-                
                 <div class="footer-col">
                     <h4>Categories</h4>
                     <ul>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#rentals">Rentals</a></li>
-                        <li><a href="#events">Events</a></li>
-                        <li><a href="#education">Education</a></li>
-                        <li><a href="#transport">Transport</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Rentals</a></li>
+                        <li><a href="#">Events & Weddings</a></li>
+                        <li><a href="#">Education & Tutoring</a></li>
+                        <li><a href="#">Transport & Logistics</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-col">
                     <h4>Locations</h4>
                     <ul>
-                        <li><a href="#nairobi">Nairobi</a></li>
-                        <li><a href="#mombasa">Mombasa</a></li>
-                        <li><a href="#kisumu">Kisumu</a></li>
-                        <li><a href="#nakuru">Nakuru</a></li>
-                        <li><a href="#eldoret">Eldoret</a></li>
+                        <li><a href="#">Nairobi</a></li>
+                        <li><a href="#">Mombasa</a></li>
+                        <li><a href="#">Kisumu</a></li>
+                        <li><a href="#">Nakuru</a></li>
+                        <li><a href="#">Eldoret</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-col">
                     <h4>Support</h4>
                     <ul>
-                        <li><a href="#help">Help Center</a></li>
-                        <li><a href="#safety">Safety Tips</a></li>
-                        <li><a href="#contact">Contact Us</a></li>
-                        <li><a href="#complaints">Complaints</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Safety Tips</a></li>
+                        <li><a href="#">Report a Problem</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-col">
                     <h4>Legal</h4>
                     <ul>
-                        <li><a href="#terms">Terms of Service</a></li>
-                        <li><a href="#privacy">Privacy Policy</a></li>
-                        <li><a href="#cookies">Cookie Policy</a></li>
-                        <li><a href="#community">Community Guidelines</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#blog">Blog</a></li>
-                        <li><a href="#careers">Careers</a></li>
-                        <li><a href="#press">Press</a></li>
-                        <li><a href="#partners">Partners</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Community Guidelines</a></li>
                     </ul>
                 </div>
             </div>
-            
             <div class="footer-bottom">
-                <div class="footer-copyright">
-                    <p>&copy; 2024 FulfillMyNeed.com. All rights reserved. Kenya.</p>
-                </div>
-                <div class="footer-social">
-                    <a href="#facebook"><i class="fab fa-facebook"></i></a>
-                    <a href="#twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#linkedin"><i class="fab fa-linkedin"></i></a>
-                    <a href="#whatsapp"><i class="fab fa-whatsapp"></i></a>
-                </div>
+                <p>&copy; 2023 FulfillMyNeed.com. All rights reserved. | Kenya's Premier Marketplace</p>
+                <p>Paybill: 123456 | Account: Your FulfillMyNeed ID</p>
             </div>
         </div>
     </footer>
 
     <!-- Modals -->
-    <div id="loginModal" class="modal">
+    
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
-            <h2>Login to FulfillMyNeed</h2>
+            <h2><i class="fas fa-sign-in-alt"></i> Login to Your Account</h2>
             <form id="loginForm">
                 <div class="form-group">
-                    <label for="loginPhone">Phone Number</label>
-                    <input type="tel" id="loginPhone" placeholder="07XX XXX XXX" required>
+                    <label for="loginEmail">Email or Phone</label>
+                    <input type="text" id="loginEmail" required>
                 </div>
                 <div class="form-group">
                     <label for="loginPassword">Password</label>
                     <input type="password" id="loginPassword" required>
                 </div>
-                <button type="submit" class="btn-submit">Login</button>
-                <p class="form-footer">
-                    Don't have an account? <a href="#register" class="switch-form">Register</a>
-                </p>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                </div>
+                <p class="text-center">Don't have an account? <a href="#" class="switch-to-register">Register here</a></p>
             </form>
         </div>
     </div>
 
-    <div id="registerModal" class="modal">
+    <!-- Registration Modal -->
+    <div class="modal" id="registerModal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
-            <h2>Join FulfillMyNeed</h2>
-            <div class="register-options">
-                <button class="register-option active" data-type="asker">
-                    <i class="fas fa-question-circle"></i>
-                    <h3>Asker</h3>
-                    <p>Post needs for free</p>
-                </button>
-                <button class="register-option" data-type="fulfiller">
-                    <i class="fas fa-check-circle"></i>
-                    <h3>Fulfiller</h3>
-                    <p>Earn by fulfilling needs</p>
-                </button>
+            <h2><i class="fas fa-user-plus"></i> Create Your Account</h2>
+            <div class="registration-tabs">
+                <button class="tab-btn active" data-tab="asker">Asker</button>
+                <button class="tab-btn" data-tab="fulfiller">Fulfiller</button>
             </div>
             
-            <form id="registerForm">
+            <!-- Asker Registration Form -->
+            <form id="askerRegistrationForm" class="registration-form active">
                 <div class="form-group">
-                    <label for="fullName">Full Name</label>
-                    <input type="text" id="fullName" required>
+                    <label for="askerName">Full Name *</label>
+                    <input type="text" id="askerName" required>
                 </div>
                 <div class="form-group">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" placeholder="07XX XXX XXX" required>
+                    <label for="askerEmail">Email *</label>
+                    <input type="email" id="askerEmail" required>
                 </div>
                 <div class="form-group">
-                    <label for="location">Location (County)</label>
-                    <select id="location" required>
+                    <label for="askerPhone">Phone Number *</label>
+                    <input type="tel" id="askerPhone" required>
+                </div>
+                <div class="form-group">
+                    <label for="askerLocation">Location *</label>
+                    <select id="askerLocation" required>
                         <option value="">Select County</option>
                         <option value="nairobi">Nairobi</option>
                         <option value="mombasa">Mombasa</option>
                         <option value="kisumu">Kisumu</option>
                         <option value="nakuru">Nakuru</option>
-                        <option value="kiambu">Kiambu</option>
+                        <option value="eldoret">Eldoret</option>
                     </select>
                 </div>
-                <div class="form-group" id="skillsGroup" style="display: none;">
-                    <label for="skills">Select Skills (1-3)</label>
-                    <div class="skills-selector">
-                        <label><input type="checkbox" name="skill" value="plumbing"> Plumbing</label>
-                        <label><input type="checkbox" name="skill" value="cleaning"> Cleaning</label>
-                        <label><input type="checkbox" name="skill" value="delivery"> Delivery</label>
-                        <label><input type="checkbox" name="skill" value="tutoring"> Tutoring</label>
-                        <label><input type="checkbox" name="skill" value="electrical"> Electrical</label>
-                        <label><input type="checkbox" name="skill" value="carpentry"> Carpentry</label>
+                <div class="form-group">
+                    <label for="askerId">ID Number *</label>
+                    <input type="text" id="askerId" required>
+                </div>
+                <div class="form-group">
+                    <label for="askerGender">Gender</label>
+                    <select id="askerGender">
+                        <option value="">Prefer not to say</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="askerPassword">Password *</label>
+                    <input type="password" id="askerPassword" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">Register as Asker</button>
+                </div>
+            </form>
+            
+            <!-- Fulfiller Registration Form -->
+            <form id="fulfillerRegistrationForm" class="registration-form">
+                <div class="form-group">
+                    <label for="fulfillerName">Full Name *</label>
+                    <input type="text" id="fulfillerName" required>
+                </div>
+                <div class="form-group">
+                    <label for="fulfillerEmail">Email *</label>
+                    <input type="email" id="fulfillerEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="fulfillerPhone">Phone Number *</label>
+                    <input type="tel" id="fulfillerPhone" required>
+                </div>
+                <div class="form-group">
+                    <label for="fulfillerLocation">Location *</label>
+                    <select id="fulfillerLocation" required>
+                        <option value="">Select County</option>
+                        <option value="nairobi">Nairobi</option>
+                        <option value="mombasa">Mombasa</option>
+                        <option value="kisumu">Kisumu</option>
+                        <option value="nakuru">Nakuru</option>
+                        <option value="eldoret">Eldoret</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="fulfillerSkills">Select Your Skills (1-3) *</label>
+                    <div class="skills-selection">
+                        <div class="skill-option">
+                            <input type="checkbox" id="skill1" value="plumbing">
+                            <label for="skill1">Plumbing</label>
+                        </div>
+                        <div class="skill-option">
+                            <input type="checkbox" id="skill2" value="cleaning">
+                            <label for="skill2">Cleaning</label>
+                        </div>
+                        <div class="skill-option">
+                            <input type="checkbox" id="skill3" value="electrical">
+                            <label for="skill3">Electrical</label>
+                        </div>
+                        <div class="skill-option">
+                            <input type="checkbox" id="skill4" value="tutoring">
+                            <label for="skill4">Tutoring</label>
+                        </div>
+                        <div class="skill-option">
+                            <input type="checkbox" id="skill5" value="delivery">
+                            <label for="skill5">Delivery</label>
+                        </div>
+                    </div>
+                    <small class="form-text">Select 1 to 3 skills that best describe what you can do</small>
+                </div>
+                <div class="form-group">
+                    <label for="fulfillerPassword">Password *</label>
+                    <input type="password" id="fulfillerPassword" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">Register as Fulfiller</button>
+                </div>
+                <div class="system-assigned">
+                    <p><i class="fas fa-info-circle"></i> After registration, you'll receive:</p>
+                    <ul>
+                        <li>Your unique FulfillMyNeed ID</li>
+                        <li>Your personal Paybill account code</li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Post a Need Modal -->
+    <div class="modal" id="postNeedModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2><i class="fas fa-plus-circle"></i> Post Your Need</h2>
+            <p class="modal-subtitle">Post your need for FREE. Set your budget and let fulfillers come to you.</p>
+            
+            <form id="postNeedForm">
+                <div class="form-group">
+                    <label for="needTitle">Need Title *</label>
+                    <input type="text" id="needTitle" placeholder="e.g., Need a plumber to fix leaking tap" required>
+                </div>
+                <div class="form-group">
+                    <label for="needDescription">Description *</label>
+                    <textarea id="needDescription" rows="4" placeholder="Describe what you need in detail..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="needCategory">Category *</label>
+                    <select id="needCategory" required>
+                        <option value="">Select a category</option>
+                        <option value="services">Services</option>
+                        <option value="rentals">Rentals</option>
+                        <option value="events">Events & Weddings</option>
+                        <option value="education">Education & Tutoring</option>
+                        <option value="transport">Transport & Logistics</option>
+                        <option value="pets">Pets & Veterinary</option>
+                        <option value="security">Security Services</option>
+                        <option value="creative">Creative & Writing</option>
+                        <option value="legal">Legal Services</option>
+                        <option value="beauty">Beauty & Wellness</option>
+                        <option value="household">Household Help</option>
+                        <option value="farming">Farming & Animals</option>
+                        <option value="digital">Digital Services</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="needBudget">Budget (KES) *</label>
+                        <input type="number" id="needBudget" min="100" step="100" value="1000" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="needLocation">Location *</label>
+                        <select id="needLocation" required>
+                            <option value="">Select County</option>
+                            <option value="nairobi">Nairobi</option>
+                            <option value="mombasa">Mombasa</option>
+                            <option value="kisumu">Kisumu</option>
+                            <option value="nakuru">Nakuru</option>
+                            <option value="eldoret">Eldoret</option>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="idNumber">National ID Number</label>
-                    <input type="text" id="idNumber" required>
+                    <label for="needPhoto">Photo (Optional)</label>
+                    <div class="file-upload">
+                        <input type="file" id="needPhoto" accept="image/*">
+                        <label for="needPhoto" class="file-upload-label">
+                            <i class="fas fa-camera"></i> Upload Photo
+                        </label>
+                        <span id="fileName">No file chosen</span>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="gender">Gender</label>
-                    <select id="gender" required>
-                        <option value="">Select</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="other">Other</option>
-                    </select>
+                    <div class="contact-options">
+                        <p><strong>Contact Options:</strong> Choose how fulfillers can contact you</p>
+                        <div class="contact-checkboxes">
+                            <label>
+                                <input type="checkbox" name="contactMethod" value="whatsapp" checked>
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </label>
+                            <label>
+                                <input type="checkbox" name="contactMethod" value="call" checked>
+                                <i class="fas fa-phone"></i> Call
+                            </label>
+                            <label>
+                                <input type="checkbox" name="contactMethod" value="sms">
+                                <i class="fas fa-sms"></i> SMS
+                            </label>
+                            <label>
+                                <input type="checkbox" name="contactMethod" value="email">
+                                <i class="fas fa-envelope"></i> Email
+                            </label>
+                        </div>
+                    </div>
                 </div>
-                <button type="submit" class="btn-submit">Register Now</button>
-                <p class="form-footer">
-                    Already have an account? <a href="#login" class="switch-form">Login</a>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <i class="fas fa-paper-plane"></i> Post Need for FREE
+                    </button>
+                </div>
+                <p class="text-center small">
+                    <i class="fas fa-info-circle"></i> Your contact details will remain hidden until a fulfiller pays KES 100 to unlock them.
                 </p>
             </form>
         </div>
     </div>
 
-    <div id="postNeedModal" class="modal">
+    <!-- Unlock Contact Modal -->
+    <div class="modal" id="unlockContactModal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
-            <h2>Post Your Need (100% FREE)</h2>
-            <form id="postNeedForm">
-                <div class="form-group">
-                    <label for="needTitle">Need Title</label>
-                    <input type="text" id="needTitle" placeholder="e.g., Need a plumber for leaking tap" required>
+            <h2><i class="fas fa-unlock-alt"></i> Unlock Contact Details</h2>
+            
+            <div class="need-details">
+                <h3 id="unlockNeedTitle">Need a plumber to fix leaking tap</h3>
+                <div class="need-meta">
+                    <span><i class="fas fa-money-bill-wave"></i> Budget: <strong>KES 1,500</strong></span>
+                    <span><i class="fas fa-map-marker-alt"></i> Nairobi</span>
                 </div>
-                <div class="form-group">
-                    <label for="needDescription">Description</label>
-                    <textarea id="needDescription" rows="4" required></textarea>
+            </div>
+            
+            <div class="unlock-info">
+                <div class="info-card">
+                    <i class="fas fa-clock"></i>
+                    <h4>1 Hour Access</h4>
+                    <p>Contact details unlocked for 1 hour only</p>
                 </div>
-                <div class="form-group">
-                    <label for="needBudget">Budget (KES)</label>
-                    <input type="number" id="needBudget" min="100" placeholder="e.g., 1500" required>
+                <div class="info-card">
+                    <i class="fas fa-lock"></i>
+                    <h4>Private & Secure</h4>
+                    <p>Only you can see the contact details</p>
                 </div>
-                <div class="form-group">
-                    <label for="needLocation">Location</label>
-                    <input type="text" id="needLocation" placeholder="e.g., Westlands, Nairobi" required>
-                </div>
-                <div class="form-group">
-                    <label for="needCategory">Category</label>
-                    <select id="needCategory" required>
-                        <option value="">Select Category</option>
-                        <option value="plumbing">Plumbing</option>
-                        <option value="cleaning">Cleaning</option>
-                        <option value="delivery">Delivery</option>
-                        <option value="handyman">Handyman</option>
-                        <option value="tutoring">Tutoring</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="needPhoto">Photo (Optional)</label>
-                    <input type="file" id="needPhoto" accept="image/*">
-                </div>
-                <button type="submit" class="btn-submit">Post Need for Free</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Payment Simulation Modal -->
-    <div id="paymentModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h2>Unlock Contact Details</h2>
-            <div class="payment-info">
-                <div class="payment-detail">
-                    <span>Contact Access Fee:</span>
-                    <span class="payment-amount">KES 100</span>
-                </div>
-                <div class="payment-detail">
-                    <span>Access Duration:</span>
-                    <span>1 Hour</span>
-                </div>
-                <div class="payment-detail">
-                    <span>Paybill Number:</span>
-                    <span class="paybill-number">123456</span>
-                </div>
-                <div class="payment-detail">
-                    <span>Account Number:</span>
-                    <span class="account-number" id="accountNumber">FMN-XXXXXX</span>
+                <div class="info-card">
+                    <i class="fas fa-sync-alt"></i>
+                    <h4>Renewable</h4>
+                    <p>Pay again to re-unlock after 1 hour</p>
                 </div>
             </div>
             
             <div class="payment-instructions">
-                <h3>How to Pay:</h3>
-                <ol>
-                    <li>Go to M-PESA on your phone</li>
-                    <li>Select "Lipa Na M-PESA"</li>
-                    <li>Enter Paybill: <strong>123456</strong></li>
-                    <li>Enter Account: <strong id="displayAccount">FMN-XXXXXX</strong></li>
-                    <li>Enter Amount: <strong>100</strong></li>
-                    <li>Enter your PIN and send</li>
-                </ol>
+                <h4><i class="fas fa-money-check-alt"></i> Payment Instructions</h4>
+                <p>Pay <strong>KES 100</strong> via M-Pesa to unlock contact details for 1 hour.</p>
+                <div class="payment-details">
+                    <div class="payment-item">
+                        <span>Paybill Number:</span>
+                        <strong>123456</strong>
+                    </div>
+                    <div class="payment-item">
+                        <span>Account Number:</span>
+                        <strong id="accountNumber">FMN-ASKER-001</strong>
+                    </div>
+                </div>
+                <p class="small"><i class="fas fa-info-circle"></i> Use your FulfillMyNeed ID as the account number if prompted</p>
             </div>
             
-            <div class="payment-verify">
-                <h3>Verify Payment:</h3>
-                <input type="text" id="mpesaCode" placeholder="Enter M-PESA Transaction Code">
-                <button id="verifyPayment" class="btn-submit">Verify & Unlock Contact</button>
+            <div class="payment-confirmation">
+                <h4><i class="fas fa-check-circle"></i> Confirm Payment</h4>
+                <p>After payment, enter the M-Pesa transaction code below:</p>
+                <div class="form-group">
+                    <input type="text" id="mpesaCode" placeholder="Enter M-Pesa transaction code" maxlength="10">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary btn-block" id="confirmPaymentBtn">
+                        <i class="fas fa-unlock"></i> Unlock Contact Details
+                    </button>
+                </div>
+                <p class="text-center small">
+                    <i class="fas fa-shield-alt"></i> Your payment is secure. Contact details will appear immediately after confirmation.
+                </p>
             </div>
         </div>
     </div>
 
-    <!-- PWA Install Prompt -->
-    <div id="installPrompt" class="install-prompt">
-        <div class="install-content">
-            <p>Install FulfillMyNeed for faster access</p>
-            <div class="install-buttons">
-                <button id="installCancel">Not Now</button>
-                <button id="installAccept">Install</button>
+    <!-- Install PWA Prompt -->
+    <div class="pwa-prompt" id="pwaPrompt">
+        <div class="pwa-content">
+            <i class="fas fa-mobile-alt"></i>
+            <div>
+                <h4>Install FulfillMyNeed App</h4>
+                <p>Install for faster access and offline use</p>
             </div>
+            <button class="btn btn-primary" id="installPwaBtn">Install</button>
+            <button class="btn btn-outline" id="dismissPwaBtn">Later</button>
         </div>
     </div>
 
-    <!-- Scripts -->
-    <script src="/js/app.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
